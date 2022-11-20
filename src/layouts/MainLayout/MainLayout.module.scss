@@ -1,0 +1,8 @@
+.mainLayout{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    min-height: 100vh;
+    .main{
+        background-color: #F5F5F5;
+    }
+}
