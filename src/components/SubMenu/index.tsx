@@ -15,7 +15,7 @@ const SubMenu: React.FC<SubMenuProps> = ({ menuIcon, menuName, children }) => {
   const menuClasses = active ? `${styles.menu} ${styles.active}` : `${styles.menu}`;
   const iconClasses = active ? `${styles.icon} ${styles.active}` : `${styles.icon}`;
   return (
-    <div className={styles.submenu}>
+    <div className={styles.root}>
       <div onClick={() => setActive((prev) => !prev)} className={styles.acardion}>
         <div className={styles.name}>
           {menuIcon}

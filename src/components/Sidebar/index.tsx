@@ -21,7 +21,7 @@ import WorkIcon from "@mui/icons-material/Work";
 
 const Sidebar: React.FC = () => {
   return (
-    <div className={styles.sidebar}>
+    <div className={styles.root}>
       <div className={styles.top}>
         <h2>Admin</h2>
       </div>
