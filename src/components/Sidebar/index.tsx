@@ -2,12 +2,12 @@ import React from "react";
 import SubMenu from "../SubMenu";
 import styles from "./Sidebar.module.scss";
 
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import AssignmentIcon from "@mui/icons-material/Assignment";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
-import BarChartIcon from '@mui/icons-material/BarChart';
-import BookIcon from '@mui/icons-material/Book';
+import BarChartIcon from "@mui/icons-material/BarChart";
+import BookIcon from "@mui/icons-material/Book";
 import EmojiPeopleOutlinedIcon from "@mui/icons-material/EmojiPeopleOutlined";
-import GroupsIcon from '@mui/icons-material/Groups';
+import GroupsIcon from "@mui/icons-material/Groups";
 import HistoryToggleOffIcon from "@mui/icons-material/HistoryToggleOff";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
@@ -18,6 +18,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import WorkIcon from "@mui/icons-material/Work";
+import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
   return (
@@ -28,89 +29,74 @@ const Sidebar: React.FC = () => {
       <div className={styles.center}>
         <ul>
           <li>
-            <a href="#">
+            <Link to="/">
               <HomeOutlinedIcon className={styles.icon} />
               <span>Главная</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <SubMenu
-              menuIcon={<PeopleOutlineIcon className={styles.icon} />}
-              menuName="Меню 1"
-            >
-              <a href="#">
+            <SubMenu menuIcon={<PeopleOutlineIcon className={styles.icon} />} menuName="Меню 1">
+              <Link to="/wait">
                 <HistoryToggleOffIcon className={styles.icon} />
                 <span>Ожидание</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to="/students">
                 <EmojiPeopleOutlinedIcon className={styles.icon} />
                 <span>Студенты</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to="/teachers">
                 <AssignmentIndOutlinedIcon className={styles.icon} />
                 <span>Учителя</span>
-              </a>
+              </Link>
             </SubMenu>
           </li>
           <li>
-            <SubMenu
-              menuIcon={<WidgetsOutlinedIcon className={styles.icon} />}
-              menuName="Меню 2"
-            >
-             
-              <a href="#">
+            <SubMenu menuIcon={<WidgetsOutlinedIcon className={styles.icon} />} menuName="Меню 2">
+              <Link to="/courses">
                 <BookIcon className={styles.icon} />
                 <span>Курсы</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to="/groups">
                 <GroupsIcon className={styles.icon} />
                 <span>Группы</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to="/lessons">
                 <AssignmentIcon className={styles.icon} />
                 <span>Расписание</span>
-              </a>
+              </Link>
             </SubMenu>
           </li>
           <li>
-            <SubMenu
-              menuIcon={<MonetizationOnOutlinedIcon className={styles.icon} />}
-              menuName="Финанс"
-            >
-              <a href="#">
+            <SubMenu menuIcon={<MonetizationOnOutlinedIcon className={styles.icon} />} menuName="Финанс">
+              <Link to="/payments">
                 <TrendingUpIcon className={styles.icon} />
                 <span>Приход</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to="/expenses">
                 <TrendingDownIcon className={styles.icon} />
                 <span>Расход</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to="/statistics">
                 <BarChartIcon className={styles.icon} />
                 <span>Статистика</span>
-              </a>
+              </Link>
             </SubMenu>
           </li>
           <li>
-            <SubMenu
-              menuIcon={<TuneOutlinedIcon className={styles.icon} />}
-              menuName="Настройки"
-            >
-              <a href="#">
+            <SubMenu menuIcon={<TuneOutlinedIcon className={styles.icon} />} menuName="Настройки">
+              <Link to="/employees">
                 <WorkIcon className={styles.icon} />
                 <span>Сотрудники</span>
-              </a>
-              <a href="#">
+              </Link>
+              <Link to="/control">
                 <RemoveRedEyeIcon className={styles.icon} />
                 <span>Контроль</span>
-              </a>
+              </Link>
             </SubMenu>
           </li>
         </ul>
       </div>
-      <div className={styles.bottom}>
-        Copyright © 2021 Karsoft LLC. All rights reserved.
-      </div>
+      <div className={styles.bottom}>Copyright © 2021 Karsoft LLC. All rights reserved.</div>
     </div>
   );
 };

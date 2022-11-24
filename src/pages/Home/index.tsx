@@ -1,8 +1,18 @@
-import React from 'react'
+import React from 'react';
+import Widget from '../../components/Widget';
+import styles from "./Home.module.scss";
 
-const Home = () => {
+const Home:React.FC = () => {
   return (
-    <div>Home</div>
+    <div className={styles.root}>
+      <div className={styles.widgets}>
+        <Widget/>
+        <Widget/>
+        <Widget/>
+        <Widget/>
+        <Widget/>
+      </div>
+    </div>
   )
 }
 
