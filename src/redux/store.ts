@@ -1,17 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import login from "./login/slice";
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import home from "./home/slice";
+import login from "./login/slice";
 
 const persistConfig = {
   key: "root",
@@ -23,13 +15,14 @@ const rootReducer = persistReducer(persistConfig, login);
 const store = configureStore({
   reducer: {
     login: rootReducer,
+    home,
   },
   middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export let persistor = persistStore(store);

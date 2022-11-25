@@ -1,30 +1,24 @@
-export interface ILoginState {
-  user: ILogin | null;
-  token: string | null | undefined;
-  isUserLogin: boolean;
+import { CancelToken } from "axios";
+
+export interface IMainState {
+  data: IMainData;
   isLoading: boolean;
-  error: string | null;
+  error: string;
+}
+export interface MainParamsProps {
+  cancelToken?: CancelToken;
 }
 
-export interface ILogin {
-  id: string;
-  name: string;
-  surname: string;
-  phone: string;
-  birthday: string;
-  address: string;
-  password: string;
-  role: string;
-  token: string;
-  groups?: IGroups[];
+export interface ILeadStatistics {
+  lead: string;
+  count: number;
 }
 
-export interface IGroups {
-  id: number;
-  name: string;
-}
-
-export interface ILoginProps {
-  phone: string;
-  password: string;
+export interface IMainData {
+  waits: number;
+  students: number;
+  teachers: number;
+  courses: number;
+  groups: number;
+  lead: ILeadStatistics[];
 }

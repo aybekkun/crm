@@ -1,25 +1,20 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { $authHost, $host } from "../../axios";
-import { ILogin, ILoginProps } from "./types";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchLogin = createAsyncThunk("login/fetchLogin", async ({ phone, password }: ILoginProps, thunkAPI) => {
-  try {
-    const { data } = await $host.post<ILogin>("login", {
-      phone: phone,
-      password: password,
-    });
-    localStorage.setItem("token", data.token);
-    return data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
-  }
-});
+import { $authHost } from '../../axios';
+import { IMainData, MainParamsProps } from './types';
 
-export const checkLogin = createAsyncThunk("check/checkLogin", async (_, thunkAPI) => {
-  try {
-    const { data } = await $authHost.get<ILogin>("check");
-    return data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue("Не удалось загрузить пользователей");
+
+export const fetchMain = createAsyncThunk(
+  'main/fetchMain',
+  async (mainParams: MainParamsProps, thunkAPI) => {
+    try {
+      const { data } = await $authHost.get<IMainData>(`home`, { 
+        params: mainParams,
+        cancelToken: mainParams.cancelToken,
+      });
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue('Не удалось загрузить ожидающих');
+    }
   }
-});
+);

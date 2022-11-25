@@ -1,53 +1,39 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IMainData, IMainState } from './types';
+import { fetchMain } from './asyncActions';
 
-import { fetchLogin, checkLogin } from "./asyncActions";
-import { ILogin, ILoginState } from "./types";
 
-const initialState: ILoginState = {
-  user: null,
-  token: localStorage.getItem("token") ? localStorage.getItem("token") : null,
-  isUserLogin: false,
+const initialState: IMainState = {
+  data: {
+    waits: 0,
+    students: 0,
+    teachers: 0,
+    courses: 0,
+    groups: 0,
+    lead: [{ count: 0, lead: '' }],
+  },
   isLoading: false,
-  error: "",
+  error: '',
 };
 
-export const loginSlice = createSlice({
-  name: "login",
+export const mainSlice = createSlice({
+  name: 'main',
   initialState,
-  reducers: {
-    logout(state) {
-      state.isUserLogin = false;
-      localStorage.removeItem("token");
-    },
-  },
+  reducers: {},
   extraReducers: {
-    [fetchLogin.fulfilled.type]: (state, action: PayloadAction<ILogin>) => {
-      state.user = action.payload;
-      state.isUserLogin = true;
-      state.error = "";
+    [fetchMain.fulfilled.type]: (state, action: PayloadAction<IMainData>) => {
+      state.data = action.payload;
+      state.error = '';
       state.isLoading = false;
     },
-    [fetchLogin.pending.type]: (state) => {
+    [fetchMain.pending.type]: (state) => {
       state.isLoading = true;
     },
-    [fetchLogin.rejected.type]: (state, action: PayloadAction<string>) => {
+    [fetchMain.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
-    },
-    [checkLogin.fulfilled.type]: (state, action: PayloadAction<ILogin>) => {
-      state.user = action.payload;
-      state.isUserLogin = true;
-      state.error = "";
-      state.isLoading = false;
-    },
-    [checkLogin.rejected.type]: (state, action: PayloadAction<ILogin>) => {
-      state.isUserLogin = false;
-      state.isLoading = false;
-      state.error = "Error"
     },
   },
 });
 
-export const { logout } = loginSlice.actions;
-
-export default loginSlice.reducer;
+export default mainSlice.reducer;
