@@ -26,7 +26,7 @@ const Login: React.FC = () => {
   });
   const dispatch = useAppDispatch();
   const { isUserLogin } = useSelector((state: RootState) => state.login);
-  const navigate = useNavigate();
+  
   let location = useLocation();
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
     dispatch(fetchLogin(values));

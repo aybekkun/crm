@@ -4,6 +4,10 @@ import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, R
 import storage from "redux-persist/lib/storage";
 import home from "./home/slice";
 import login from "./login/slice";
+import rooms from "./rooms/slice";
+import time from "./time/slice";
+import lead from "./lead/slice";
+import courses from "./courses/slice";
 
 const persistConfig = {
   key: "root",
@@ -16,6 +20,10 @@ const store = configureStore({
   reducer: {
     login: rootReducer,
     home,
+    rooms,
+    time,
+    lead,
+    courses
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

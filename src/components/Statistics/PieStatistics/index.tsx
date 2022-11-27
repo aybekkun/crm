@@ -47,18 +47,18 @@ const PieStatistics: React.FC<PieStatisticsProps> = ({ lead }) => {
               dataKey="count"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell key={`${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
             <Tooltip />
           </PieChart>
         </ResponsiveContainer>
-      </div>
+      </div>  
       <div className={styles.chartInfo}>
        {
         lead.map((item,i) =>(
-          <div className={styles.chartGroup}>
-            <span className={styles.chartDot} style={{background:COLORS[i%COLORS.length]}}></span>
+          <div key={i} className={styles.chartGroup}>
+            <span  className={styles.chartDot} style={{background:COLORS[i%COLORS.length]}}></span>
             <span>{item.lead}</span>
           </div>
         ))
