@@ -19,13 +19,13 @@ const AddDrawer: React.FC<AddDrawerProps> = ({ name, children, open = false, onC
       <Drawer anchor={"right"} open={open} onClose={onClose}>
         <div className={styles.root}>
           <div className={styles.name}>
-            <IconButton sx={{marginRight:"12px"}} onClick={onClickClose}>
+            <IconButton sx={{ marginRight: "12px" }} onClick={onClickClose}>
               <CloseIcon />
             </IconButton>
             <h2>Добавить {name}</h2>
           </div>
           <Divider />
-          {children}
+          <div className={styles.form}>{children}</div>
         </div>
       </Drawer>
     </>

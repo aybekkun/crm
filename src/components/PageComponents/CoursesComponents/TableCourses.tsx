@@ -16,9 +16,10 @@ import TableSpinner from "../../TableSpinner";
 type TableCoursesProps = {
   data: ICourseData[] | undefined;
   onDelete: (id: number) => void;
+  onEdit: (id: number) => void;
   isLoading: boolean;
 };
-const TableCourses: React.FC<TableCoursesProps> = ({ data, onDelete, isLoading }) => {
+const TableCourses: React.FC<TableCoursesProps> = ({ data, onDelete, onEdit, isLoading }) => {
   return (
     <>
       <TableContainer component={Paper}>
@@ -47,7 +48,7 @@ const TableCourses: React.FC<TableCoursesProps> = ({ data, onDelete, isLoading }
                   <TableCell align="right">{item.price + " uzs"}</TableCell>
                   <TableCell align="right">{item.duration}</TableCell>
                   <TableCell align="right">
-                    <EditButton />
+                    <EditButton onEdit={()=>onEdit(item.id)}/>
                     <DeleteButton onDelete={() => onDelete(item.id)} color="error" />
                   </TableCell>
                 </TableRow>

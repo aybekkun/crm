@@ -10,13 +10,17 @@ import React from "react";
 }
 
 type BasicPaginationProps = {
-  pageCount: number;
-  currentPage: number;
-  onChangePage:(page:number)=>void;
+  pageCount?: number;
+  currentPage?: number;
+  onChangePage?: (page: number) => void;
 };
-const BasicPagination: React.FC<BasicPaginationProps> = ({ pageCount = 1, currentPage = 1, onChangePage }) => {
+const BasicPagination: React.FC<BasicPaginationProps> = ({
+  pageCount = 1,
+  currentPage = 1,
+  onChangePage = () => undefined,
+}) => {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    onChangePage(value)
+    onChangePage(value);
   };
 
   return (

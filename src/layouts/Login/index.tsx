@@ -2,7 +2,7 @@ import { Button, Paper, TextField } from "@mui/material";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { fetchLogin } from "../../redux/login/asyncActions";
 import { RootState, useAppDispatch } from "../../redux/store";
 import styles from "./Login.module.scss";
