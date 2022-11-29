@@ -1,22 +1,35 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 type NumberInputProps = {
-  label: string;
-  name: string;
-  onChangeInput: (e: any) => void;
-  value: string | number;
+  type?: "number" | "tel";
+  label?: string;
+  name?: string;
+  onChangeInput?: (e: any) => void;
+  value?: string | number;
 };
 
-const NumberInput: React.FC<NumberInputProps> = ({ name = "number", label = "Номер", onChangeInput, value }) => {
+const NumberInput: React.FC<NumberInputProps> = ({
+  type = "tel",
+  name = "number",
+  label = "Номер",
+  onChangeInput = () => undefined,
+  value = 0,
+}) => {
   const [inputValue, setInputValue] = React.useState(value);
   const [error, setError] = React.useState(false);
   const onChangeValue = (e: any) => {
-    if (e.target.value.toString().length < 10 && e.target.value >= 0) {
+    if (type === "number") {
+      if (e.target.value.toString().length < 20 && e.target.value >= 0) {
+        setInputValue(e.target.value);
+        onChangeInput(e);
+        setError(false);
+      } else {
+        setError(true);
+      }
+    }
+    if (type === "tel") {
       setInputValue(e.target.value);
       onChangeInput(e);
-      setError(false);
-    } else {
-      setError(true);
     }
   };
   return (
@@ -26,7 +39,7 @@ const NumberInput: React.FC<NumberInputProps> = ({ name = "number", label = "Н�
         value={value}
         label={label}
         onChange={onChangeValue}
-        type="number"
+        type={type}
         fullWidth
         size="small"
         error={error}

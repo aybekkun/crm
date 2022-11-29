@@ -2,13 +2,14 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import { UseFormRegister, FieldValues } from "react-hook-form";
 type TextInputProps = {
-  label: string;
-  name: string;
-  onChangeInput: (e:any)=>void;
-  value:string | number | "";
+  type?:"text"| "password";
+  label?: string;
+  name?: string;
+  onChangeInput?: (e:any)=>void;
+  value?:string | number | "";
 };
 
-const TextInput: React.FC<TextInputProps> = ({ name = "", label = "Название",onChangeInput,value }) => {
+const TextInput: React.FC<TextInputProps> = ({type="text", name = "", label = "Название",onChangeInput = ()=>undefined,value = "" }) => {
   // const [inputValue, setInputValue] = React.useState(value);
 
   // const onChangeValue = (e: any) => {
@@ -22,7 +23,7 @@ const TextInput: React.FC<TextInputProps> = ({ name = "", label = "Назван�
         value={value}
         label={label}
         onChange={onChangeInput}
-        type="text"
+        type={type}
         fullWidth
         size="small"
         required

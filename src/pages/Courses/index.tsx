@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { useSelector } from "react-redux";
 import AddDrawer from "../../components/AddDrawer";
 import BasicPagination from "../../components/BasicPagination";
@@ -13,7 +13,7 @@ import { createCourse, deleteCourse, fetchCourses, updateCourse } from "../../re
 import { setPageCourses } from "../../redux/courses/slice";
 import { RootState, useAppDispatch } from "../../redux/store";
 import styles from "./Courses.module.scss";
-
+import useForm from "../../hooks/useForm";
 type FormValues = {
   id: number;
   name: string;
@@ -24,10 +24,13 @@ type FormValues = {
 const Courses: React.FC = () => {
   const dispatch = useAppDispatch();
   const { courses, page, isLoading } = useSelector((state: RootState) => state.courses);
+
   const [courseCount, setCourseCount] = React.useState(0);
   const [open, setOpen] = React.useState(false);
+
   const [typeSubmit, setTypeSubmit] = React.useState<"add" | "edit">("add");
-  const [formData, setFormData] = React.useState<FormValues>({
+  
+  const { formData, setFormData, handleInputChange } = useForm<FormValues>({
     id: 0,
     name: "",
     price: 0,
@@ -54,10 +57,6 @@ const Courses: React.FC = () => {
       setFormData({ id: 0, name: "", price: 0, duration: 0 });
       setCourseCount((prev) => prev + 1);
     }
-  };
-
-  const handleInputChange = (e: any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onAddItem = () => {

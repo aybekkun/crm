@@ -8,7 +8,9 @@ import rooms from "./rooms/slice";
 import time from "./time/slice";
 import lead from "./lead/slice";
 import courses from "./courses/slice";
-
+import teachers from "./teachers/slice";
+import expenses from "./expenses/slice";
+import groups from "./groups/slice";
 const persistConfig = {
   key: "root",
   version: 1,
@@ -23,7 +25,10 @@ const store = configureStore({
     rooms,
     time,
     lead,
-    courses
+    courses,
+    teachers,
+    expenses,
+    groups,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

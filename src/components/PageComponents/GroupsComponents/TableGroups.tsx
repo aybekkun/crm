@@ -1,3 +1,4 @@
+import React from "react";
 
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -6,34 +7,31 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import React from "react";
-import { ICourseData } from "../../../redux/courses/types";
-import DeleteButton from "../../Buttons/DeleteButton";
-import EditButton from "../../Buttons/EditButton";
+import { IGroupData } from "../../../redux/groups/types";
 import TableSpinner from "../../TableSpinner";
 
-type TableCoursesProps = {
-  data: ICourseData[] | undefined;
-  onDelete: (id: number) => void;
-  onEdit: (id: number) => void;
+type TableGroupsProps = {
+  data: IGroupData[] | undefined;
   isLoading: boolean;
 };
-const TableCourses: React.FC<TableCoursesProps> = ({ data, onDelete, onEdit, isLoading }) => {
+const TableGroups: React.FC<TableGroupsProps> = ({ data, isLoading }) => {
   return (
     <>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ width: "40%" }}>Названия</TableCell>
-              <TableCell sx={{ width: "20%" }} align="right">
-                Стоимость
+              <TableCell sx={{ width: "25%" }} align="left">
+                Название
               </TableCell>
-              <TableCell sx={{ width: "20%" }} align="right">
-                Продолжительность
+              <TableCell sx={{ width: "25%" }} align="left">
+                Курс
               </TableCell>
-              <TableCell sx={{ width: "20%" }} align="right">
-                Действии
+              <TableCell sx={{ width: "25%" }} align="left">
+                Учитель
+              </TableCell>
+              <TableCell sx={{ width: "25%" }} align="left">
+                Текущий урок
               </TableCell>
             </TableRow>
           </TableHead>
@@ -44,12 +42,9 @@ const TableCourses: React.FC<TableCoursesProps> = ({ data, onDelete, onEdit, isL
                   <TableCell component="th" scope="row">
                     {item.name}
                   </TableCell>
-                  <TableCell align="right">{item.price + " uzs"}</TableCell>
-                  <TableCell align="right">{item.duration}</TableCell>
-                  <TableCell align="right">
-                    <EditButton onEdit={()=>onEdit(item.id)}/>
-                    <DeleteButton onDelete={() => onDelete(item.id)} color="error" />
-                  </TableCell>
+                  <TableCell align="left">{item.course_name}</TableCell>
+                  <TableCell align="left">{item.teacher_name}</TableCell>
+                  <TableCell align="left">{item.lesson}</TableCell>
                 </TableRow>
               ))
             ) : (
@@ -62,4 +57,4 @@ const TableCourses: React.FC<TableCoursesProps> = ({ data, onDelete, onEdit, isL
   );
 };
 
-export default TableCourses;
+export default TableGroups;
