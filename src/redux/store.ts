@@ -12,6 +12,7 @@ import teachers from "./teachers/slice";
 import expenses from "./expenses/slice";
 import groups from "./groups/slice";
 import lessons from "./lessons/slice";
+import students from "./stundents/slice";
 const persistConfig = {
   key: "root",
   version: 1,
@@ -31,6 +32,7 @@ const store = configureStore({
     expenses,
     groups,
     lessons,
+    students
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
