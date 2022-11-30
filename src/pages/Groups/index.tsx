@@ -11,7 +11,7 @@ import TableGroups from "../../components/PageComponents/GroupsComponents/TableG
 import TopInfo from "../../components/TopInfo";
 import useForm from "../../hooks/useForm";
 import { fetchCourses } from "../../redux/courses/asyncActions";
-import { fetchGroups } from "../../redux/groups/asyncActions";
+import { createGroup, fetchGroups } from "../../redux/groups/asyncActions";
 import { setPageGroups } from "../../redux/groups/slice";
 import { RootState, useAppDispatch } from "../../redux/store";
 import { fetchTeachers } from "../../redux/teachers/asyncActions";
@@ -30,7 +30,7 @@ const Groups: React.FC = () => {
   const { teachers } = useSelector((state: RootState) => state.teachers);
 
   const [open, setOpen] = React.useState(false);
-
+  const [groupCount, setGroupCount] = React.useState(0);
   React.useEffect(() => {
     const cancelToken = axios.CancelToken.source();
     dispatch(fetchGroups({ page, cancelToken: cancelToken.token }));
@@ -38,7 +38,7 @@ const Groups: React.FC = () => {
     return () => {
       cancelToken.cancel();
     };
-  }, [page, dispatch]);
+  }, [page, dispatch, groupCount]);
 
   React.useEffect(() => {
     dispatch(fetchCourses({}));
@@ -50,6 +50,13 @@ const Groups: React.FC = () => {
     course_id: 0,
     teacher_id: 0,
   });
+  const onSumbitForm = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await dispatch(createGroup(formData));
+    setOpen(false);
+    setGroupCount((prev) => prev + 1);
+    resetForm();
+  };
 
   const onAddCourse = (id: number) => {
     setFormData({ ...formData, course_id: id });
@@ -68,9 +75,9 @@ const Groups: React.FC = () => {
       <TableGroups data={groups.data} isLoading={isLoading} />
       <BasicPagination currentPage={page} pageCount={groups.total} onChangePage={onChangePage} />
       <AddDrawer name="группу" open={open} onClose={() => setOpen(false)}>
-        <form>
+        <form onSubmit={onSumbitForm}>
           <TextInput name="name" label="Названия" value={formData.name} onChangeInput={handleInputChange} />
-          <SelectInput name="Учитель" data={teachers} onChangeSelect={onAddTeacher} />
+          <SelectInput name="Учитель" data={teachers.data} onChangeSelect={onAddTeacher} />
           <SelectInput name="Курс" data={courses.data} onChangeSelect={onAddCourse} />
           <AddButton type="submit" />
         </form>

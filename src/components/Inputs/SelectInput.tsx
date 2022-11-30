@@ -13,19 +13,23 @@ type SelectProps = {
 };
 
 const SelectInput: React.FC<SelectProps> = ({ data, name = "select", onChangeSelect = () => undefined }) => {
-  const [value, setValue] = React.useState("");
+  const [selectValue, setSelectValue] = React.useState("");
+
+  React.useEffect(() => {
+    setSelectValue("");
+  }, []);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setValue(event.target.value as string);
+    setSelectValue(event.target.value as string);
   };
   return (
     <div style={{ paddingBottom: "20px" }}>
       <FormControl size="small" fullWidth>
-        <InputLabel id="demo-simple-select-label">{name}</InputLabel>
-        <Select value={value} label="Age" onChange={handleChange}>
+        <InputLabel>{name}</InputLabel>
+        <Select value={selectValue} label="Age" onChange={handleChange}>
           {data ? (
             data.map((item) => (
-              <MenuItem onClick={() => onChangeSelect(item.id)} value={item.id}>
+              <MenuItem key={item.id} onClick={() => onChangeSelect(item.id)} value={item.id}>
                 {item.name}
               </MenuItem>
             ))
