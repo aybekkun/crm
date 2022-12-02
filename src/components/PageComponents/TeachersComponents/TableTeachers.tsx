@@ -11,6 +11,7 @@ import { ITeacherData } from "../../../redux/teachers/types";
 import DeleteButton from "../../Buttons/DeleteButton";
 import EditButton from "../../Buttons/EditButton";
 import TableSpinner from "../../TableSpinner";
+import { Link } from "react-router-dom";
 
 type TableTeachersProps = {
   data: ITeacherData[] | undefined;
@@ -52,7 +53,9 @@ const TableTeachers: React.FC<TableTeachersProps> = ({
               data.map((item) => (
                 <TableRow key={item.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    {item.name} {item.surname}
+                    <Link style={{ display: "block", textDecoration:"none", color:"inherit" }} to={`/teachers/${item.id}`}>
+                      {item.name} {item.surname}
+                    </Link>
                   </TableCell>
                   <TableCell align="left">{item.phone}</TableCell>
                   <TableCell align="left">{item.birthday}</TableCell>

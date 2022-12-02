@@ -20,6 +20,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import Wait from "./pages/Wait";
 import Students from "./pages/Students";
 import Teachers from "./pages/Teachers";
+import TeacherInfo from "./pages/Teachers/TeacherInfo";
 const App = () => {
   const dispatch = useAppDispatch();
   const { isUserLogin } = useSelector((state: RootState) => state.login);
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/wait" element={<Wait />} />
           <Route path="/students" element={<Students />} />
           <Route path="/teachers" element={<Teachers />} />
+          <Route path="/teachers/:id" element={<TeacherInfo />} />
           {/* Меню 2 */}
           <Route path="/courses" element={<Courses />} />
           <Route path="/groups" element={<Groups />} />

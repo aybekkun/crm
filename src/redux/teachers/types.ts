@@ -36,7 +36,7 @@ export interface ITeachersForm {
   id?: number;
   name: string;
   surname: string;
-  phone: string;
+  phone?: string;
   birthday?: string | "";
   address?: string;
   password?: string;
@@ -52,4 +52,6 @@ export interface ITeacherOneData extends ITeacherData {
 export interface ITeacherGroups {
   id: string;
   name: string;
+  start_time: string;
+  end_time: string;
 }

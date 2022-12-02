@@ -21,7 +21,7 @@ const MenuProps = {
 };
 
 type MultiSelectProps = {
-  data: ICourseData[]|ITeacherData[];
+  data: ICourseData[] | ITeacherData[];
   name?: string;
   indexes?: number[] | undefined;
   onChangeSelect?: (ids: number[]) => void;
@@ -49,12 +49,12 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     const isThere = ids.some((id) => id === idx);
     if (!isThere) {
       setIds((prev) => [...prev, idx]);
-      onChangeSelect(ids);
+      onChangeSelect([...ids, idx]);
     }
     if (isThere) {
       const newIds = ids.filter((item) => item !== idx);
       setIds(newIds);
-      onChangeSelect(ids);
+      onChangeSelect(newIds);
     }
   };
 

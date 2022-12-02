@@ -19,7 +19,7 @@ const DateIntput: React.FC<DataInputProps> = ({
 }) => {
   const [value, setValue] = React.useState<Dayjs | null>(dayjs(date));
   React.useEffect(() => {
-    setValue(null);
+    setValue(dayjs(date));
   }, []);
   const handleChange = (value: Dayjs | null) => {
     setValue(value);

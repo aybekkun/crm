@@ -17,13 +17,13 @@ const Students: React.FC = () => {
         <TextInput name="name" label="Имя" />
         <TextInput name="surname" label="Фамилия" />
         <NumberInput type="tel" name="phone" label="Телефон номер" />
-        <MultiSelect name="Группы" data={[]}  />
-        <DateIntput label="От"/>
-        <DateIntput label="День рождения  "/>
+        <MultiSelect name="Группы" data={[]} />
+        <DateIntput label="От" />
+        <DateIntput label="День рождения  " />
         <TextInput name="adress" label="Адрес" />
         <TextInput name="adress" label="Пароль" />
       </AddDrawer>
-      <BasicPagination/>
+      <BasicPagination />
     </div>
   );
 };

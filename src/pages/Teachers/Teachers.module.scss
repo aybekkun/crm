@@ -1,0 +1,12 @@
+.root{
+    .info{
+        display: flex;
+    }
+    .detail{
+        flex: 2;
+        margin-right: 20px;
+    }
+    .table{
+        flex: 8;
+    }
+}

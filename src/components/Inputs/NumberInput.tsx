@@ -4,6 +4,7 @@ type NumberInputProps = {
   type?: "number" | "tel";
   label?: string;
   name?: string;
+
   onChangeInput?: (e: any) => void;
   value?: string | number;
 };
@@ -12,6 +13,7 @@ const NumberInput: React.FC<NumberInputProps> = ({
   type = "tel",
   name = "number",
   label = "Номер",
+
   onChangeInput = () => undefined,
   value = 0,
 }) => {

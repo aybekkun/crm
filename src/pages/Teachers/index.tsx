@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 import AddDrawer from "../../components/AddDrawer";
 import BasicPagination from "../../components/BasicPagination";
 import AddButton from "../../components/Buttons/AddButton";
