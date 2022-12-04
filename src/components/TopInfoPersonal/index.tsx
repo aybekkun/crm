@@ -11,7 +11,7 @@ const TopInfoPersonal: React.FC<TopInfoPersonalProps> = ({ name = "Страни�
 
   return (
     <div className={styles.root}>
-      <h2>Информация об учителе</h2>
+      <h2>{name}</h2>
       <Button variant="contained" onClick={() => navigate(-1)}>
         Назад
       </Button>

@@ -7,7 +7,7 @@ export interface IGroupsState {
   group: IOneGroupData;
   groups: IGroups;
   form: IGroupsForm;
-  currentMonth: string | null;
+  currentMonth: number | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   page: number;
   isLoading: boolean;
   error: string;
@@ -56,7 +56,7 @@ export interface IOneGroupData {
   end_lesson: string;
   start_time: string;
   end_time: string;
-  months: string[];
+  months: number[];
   students: IStudentsGroup[];
 }
 

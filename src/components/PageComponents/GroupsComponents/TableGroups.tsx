@@ -9,6 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { IGroupData } from "../../../redux/groups/types";
 import TableSpinner from "../../TableSpinner";
+import { Link } from "react-router-dom";
 
 type TableGroupsProps = {
   data: IGroupData[] | undefined;
@@ -40,7 +41,12 @@ const TableGroups: React.FC<TableGroupsProps> = ({ data, isLoading }) => {
               data.map((item) => (
                 <TableRow key={item.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    {item.name}
+                    <Link
+                      style={{ display: "block", textDecoration: "none", color: "#1976D2" }}
+                      to={`/groups/${item.id}`}
+                    >
+                      {item.name}
+                    </Link>
                   </TableCell>
                   <TableCell align="left">{item.course_name}</TableCell>
                   <TableCell align="left">{item.teacher_name}</TableCell>

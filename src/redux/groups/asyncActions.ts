@@ -31,7 +31,7 @@ export const fetchGroups = createAsyncThunk(
 interface oneGroupParamsProps {
   id: string | undefined;
   cancelToken?: CancelToken;
-  month?: string | null;
+  month?: number | null;
 }
 
 export const fetchOneGroup = createAsyncThunk(

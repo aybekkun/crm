@@ -53,7 +53,7 @@ const TableTeachers: React.FC<TableTeachersProps> = ({
               data.map((item) => (
                 <TableRow key={item.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    <Link style={{ display: "block", textDecoration:"none", color:"inherit" }} to={`/teachers/${item.id}`}>
+                    <Link style={{ display: "block", textDecoration:"none", color: "#1976D2"}} to={`/teachers/${item.id}`}>
                       {item.name} {item.surname}
                     </Link>
                   </TableCell>

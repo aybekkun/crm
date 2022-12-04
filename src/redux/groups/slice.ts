@@ -30,7 +30,7 @@ const initialState: IGroupsState = {
     course_id: 0,
     teacher_id: 0,
   },
-  currentMonth: "",
+  currentMonth: new Date().getMonth(),
   page: 1,
   isLoading: false,
   error: "",
@@ -53,7 +53,7 @@ export const groupsSlice = createSlice({
         teacher_id: 0,
       };
     },
-    setCurrentMonth(state, action: PayloadAction<string>) {
+    setCurrentMonth(state, action: PayloadAction<number>) {
       state.currentMonth = action.payload;
     },
   },

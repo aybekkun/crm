@@ -21,6 +21,7 @@ import Wait from "./pages/Wait";
 import Students from "./pages/Students";
 import Teachers from "./pages/Teachers";
 import TeacherInfo from "./pages/Teachers/TeacherInfo";
+import GroupsInfo from "./pages/Groups/GroupsInfo";
 const App = () => {
   const dispatch = useAppDispatch();
   const { isUserLogin } = useSelector((state: RootState) => state.login);
@@ -52,6 +53,7 @@ const App = () => {
           {/* Меню 2 */}
           <Route path="/courses" element={<Courses />} />
           <Route path="/groups" element={<Groups />} />
+          <Route path="/groups/:id" element={<GroupsInfo />} />
           <Route path="/lessons" element={<Lessons />} />
           {/* Финанс */}
           <Route path="/payments" element={<Payments />} />
