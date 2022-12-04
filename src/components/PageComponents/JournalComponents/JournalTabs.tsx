@@ -43,7 +43,7 @@ const JournalTabs: React.FC<JournalTabsProps> = ({ data, onChange }) => {
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           {data.map((item, i) => (
-            <Tab value={item - 1} label={monthsName[item - 1]} key={item} {...a11yProps(item)} />
+            <Tab value={item} label={monthsName[item - 1]} key={item} {...a11yProps(item)} />
           ))}
         </Tabs>
       </Box>
